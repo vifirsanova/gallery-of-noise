@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>MISSVECTOR'S GALLERY OF THE NOISE</title>
+  <style>
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0; padding: 0; background: #020202;
+      display: flex; flex-direction: column;
+      min-height: 100vh; min-height: 100dvh;
+      font-family: 'Courier New', monospace;
+      touch-action: manipulation;
+      user-select: none; -webkit-user-select: none;
+    }
+    header {
+      text-align: center; padding: 12px 10px 6px;
+      color: #aaa; font-size: 11px; letter-spacing: 5px;
+      pointer-events: none; z-index: 10;
+    }
+    .main {
+      flex: 1; display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 2px; background: #080808; padding: 2px;
+      max-width: 620px; width: 100%; margin: 0 auto;
+    }
+    .window {
+      background: #010101; position: relative;
+      overflow: hidden; cursor: pointer;
+      min-height: 0;
+    }
+    .window canvas {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    }
+    .window .label {
+      position: absolute; top: 8px; left: 10px;
+      color: #ccc; font-size: 11px; letter-spacing: 4px;
+      pointer-events: none; z-index: 5;
+    }
+    .window .status {
+      position: absolute; bottom: 8px; right: 10px;
+      color: #333; font-size: 9px; letter-spacing: 2px;
+      pointer-events: none; z-index: 5;
+    }
+    .window.playing { outline: 1px solid #222; }
+    .window.playing .status { color: #666; }
+
+    .eq-panel {
+      background: #0a0a0a; padding: 10px;
+      display: flex; flex-direction: column;
+      gap: 12px; overflow-y: auto;
+    }
+    .eq-title {
+      color: #bbb; font-size: 11px; letter-spacing: 4px;
+      text-align: center; margin-bottom: 2px;
+    }
+    .channel-group {
+      display: flex; flex-direction: column; gap: 8px;
+      padding: 8px; background: #070707; border-radius: 3px;
+      border: 1px solid #111;
+    }
+    .channel-label {
+      color: #aaa; font-size: 10px; letter-spacing: 3px;
+      text-align: center;
+    }
+    .fader-row {
+      display: flex; gap: 8px; justify-content: center;
+      align-items: flex-end;
+    }
+    .fader {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 6px;
+    }
+    .fader label {
+      color: #888; font-size: 9px; letter-spacing: 2px;
+    }
+    .fader input[type=range] {
+      -webkit-appearance: none; appearance: none;
+      width: 60px; height: 4px;
+      transform: rotate(-90deg);
+      transform-origin: 30px 30px;
+      background: #181818; border-radius: 2px;
+      outline: none; margin: 28px 0;
+    }
+    .fader input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 14px; height: 14px;
+      background: #666; border-radius: 2px; cursor: pointer;
+    }
+    .stop-btn {
+      text-align: center; padding: 10px;
+      color: #555; font-size: 10px; letter-spacing: 3px;
+      cursor: pointer; border: 1px solid #1a1a1a;
+      border-radius: 3px; transition: all 0.2s;
+      background: #070707;
+    }
+    .stop-btn:hover { color: #c44; border-color: #422; background: #0f0808; }
+    footer {
+      text-align: center; padding: 6px;
+      color: #666; font-size: 8px; letter-spacing: 3px;
+      pointer-events: none; z-index: 10;
+    }
+  </style>
+</head>
+<body>
+  <header>MISSVECTOR'S GALLERY OF THE NOISE</header>
+  <div class="main">
+    <div class="window" id="win1">
+      <canvas id="c1"></canvas>
+      <div class="label">WHITE</div>
+      <div class="status">click</div>
+    </div>
+    <div class="window" id="win2">
+      <canvas id="c2"></canvas>
+      <div class="label">RED</div>
+      <div class="status">click</div>
+    </div>
+    <div class="window" id="win3">
+      <canvas id="c3"></canvas>
+      <div class="label">BLUE</div>
+      <div class="status">click</div>
+    </div>
+    <div class="eq-panel">
+      <div class="eq-title">CONTROLS</div>
+      
+      <div class="channel-group">
+        <div class="channel-label">WHITE · filtered noise</div>
+        <div class="fader-row">
+          <div class="fader"><input type="range" id="wvol" min="0" max="100" value="70"><label>vol</label></div>
+          <div class="fader"><input type="range" id="wdyn" min="0" max="100" value="70"><label>dyn</label></div>
+        </div>
+      </div>
+      
+      <div class="channel-group">
+        <div class="channel-label">RED · ring-mod bass</div>
+        <div class="fader-row">
+          <div class="fader"><input type="range" id="rvol" min="0" max="100" value="60"><label>vol</label></div>
+          <div class="fader"><input type="range" id="rdyn" min="0" max="100" value="70"><label>dyn</label></div>
+        </div>
+      </div>
+      
+      <div class="channel-group">
+        <div class="channel-label">BLUE · resonant swarm</div>
+        <div class="fader-row">
+          <div class="fader"><input type="range" id="bvol" min="0" max="100" value="60"><label>vol</label></div>
+          <div class="fader"><input type="range" id="bdyn" min="0" max="100" value="70"><label>dyn</label></div>
+        </div>
+      </div>
+      
+      <div class="stop-btn" id="stopBtn">STOP ALL</div>
+    </div>
+  </div>
+  <footer>github.com/vifirsanova</footer>
+
+  <script>
+    let actx = null;
+    function getCtx() { if (!actx) actx = new AudioContext(); return actx; }
+
+    // ===== WHITE: Pure filtered noise, fixed gain =====
+    function createWhite(canvas, winEl, volSlider, dynSlider) {
+      const ctx = canvas.getContext('2d');
+      let filter, master, noise, noiseG, noiseF, revG, delay, delayG, dist;
+      let playing = false, chaos = 0, dotX, dotY, dotR = 0, dotAlpha = 0;
+      let vol = 0.7, dyn = 0.7, initialized = false;
+      let tx = 0.5, ty = 0.5, pr = 0.5, sp = 0;
+
+      volSlider.addEventListener('input', () => { vol = parseInt(volSlider.value)/100; if(master)master.gain.linearRampToValueAtTime(vol*0.3,actx.currentTime+0.05); });
+      dynSlider.addEventListener('input', () => { dyn = parseInt(dynSlider.value)/100; });
+
+      function init() {
+        if(initialized)return; const a=getCtx(); initialized=true;
+        
+        filter=a.createBiquadFilter();filter.type='lowpass';filter.frequency.value=3000;filter.Q.value=1;
+        dist=a.createWaveShaper();
+        const c=new Float32Array(256);for(let i=0;i<256;i++){const x=(i-128)/128;c[i]=Math.tanh(x*4)*0.7;}dist.curve=c;
+        
+        delay=a.createDelay(0.8);delay.delayTime.value=0.3;delayG=a.createGain();delayG.gain.value=0.25;
+        const rl=a.sampleRate*3;const rb=a.createBuffer(2,rl,a.sampleRate);
+        for(let ch=0;ch<2;ch++){const d=rb.getChannelData(ch);for(let i=0;i<rl;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(a.sampleRate*0.5))*0.6;}
+        const rn=a.createConvolver();rn.buffer=rb;revG=a.createGain();revG.gain.value=0.5;
+        master=a.createGain();master.gain.value=vol*0.3;
+        
+        // Simpler chain: noise->filter->dist->delay/reverb->master
+        noiseF=a.createBiquadFilter();noiseF.type='bandpass';noiseF.frequency.value=600;noiseF.Q.value=0.3;
+        noiseG=a.createGain();noiseG.gain.value=0;
+        
+        noiseF.connect(filter);
+        filter.connect(dist);
+        dist.connect(delay);delay.connect(delayG);delayG.connect(dist);
+        dist.connect(rn);rn.connect(revG);
+        revG.connect(master);
+        master.connect(a.destination);
+        
+        const sr=a.sampleRate;const buf=a.createBuffer(1,sr*3,sr);const data=buf.getChannelData(0);
+        let b0=0,b1=0,b2=0;for(let i=0;i<data.length;i++){const w=Math.random()*2-1;b0=0.997*b0+w*0.03;b1=0.985*b1+w*0.05;b2=0.950*b2+w*0.08;data[i]=(b0+b1+b2)*0.6;}
+        noise=a.createBufferSource();noise.buffer=buf;noise.loop=true;
+        noise.connect(noiseF);noiseG.connect(filter);noise.start();
+      }
+
+      function start(){if(!initialized)init();playing=true;tx=Math.random();ty=Math.random();pr=0.3+Math.random()*0.7;sp=Math.random()*0.5;winEl.classList.add('playing');winEl.querySelector('.status').textContent='on';}
+      function stop(){playing=false;winEl.classList.remove('playing');winEl.querySelector('.status').textContent='click';}
+
+      function upd(){if(!actx||!initialized)return;const n=actx.currentTime;
+        if(playing){tx+=(Math.random()-0.5)*0.02;ty+=(Math.random()-0.5)*0.02;tx=Math.max(0.1,Math.min(0.9,tx));ty=Math.max(0.1,Math.min(0.9,ty));pr+=(Math.random()-0.5)*0.08;pr=Math.max(0.2,Math.min(1,pr));sp+=(Math.random()-0.5)*0.06;sp=Math.max(0,Math.min(1,sp));
+        const t=(pr*0.6+sp*0.4)*dyn;chaos+=(t-chaos)*0.3;
+        noiseF.frequency.linearRampToValueAtTime(200+ty*2000+sp*2000,n+0.04);
+        noiseG.gain.linearRampToValueAtTime((0.05+pr*0.08+sp*0.05)*dyn,n+0.02);
+        filter.frequency.linearRampToValueAtTime(300+ty*5000,n+0.04);filter.Q.linearRampToValueAtTime(0.5+pr*6,n+0.04);
+        delay.delayTime.linearRampToValueAtTime(0.15+sp*0.4,n+0.04);delayG.gain.linearRampToValueAtTime((0.1+pr*0.3)*dyn,n+0.04);
+        revG.gain.linearRampToValueAtTime((0.3+pr*0.4)*dyn,n+0.04);
+        dotR+=(10+chaos*40-dotR)*0.2;dotAlpha+=(0.5+chaos*0.5-dotAlpha)*0.2;dotX+=(tx*canvas.width-dotX)*0.08;dotY+=(ty*canvas.height-dotY)*0.08;
+        }else{chaos+=-chaos*0.06;noiseG.gain.linearRampToValueAtTime(0,n+0.4);dotR+=(0-dotR)*0.06;dotAlpha+=(0-dotAlpha)*0.05;}
+      }
+
+      function size(){canvas.width=canvas.parentElement.clientWidth;canvas.height=canvas.parentElement.clientHeight;dotX=canvas.width/2;dotY=canvas.height/2;}
+      window.addEventListener('resize',size);size();
+      canvas.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(!initialized)init();playing?stop():start();});
+      let lt=0;
+      function loop(ts){if(!lt)lt=ts;const dt=Math.min((ts-lt)/1000,0.1);lt=ts;if(playing||chaos>0.01)upd();
+        const W=canvas.width,H=canvas.height;if(!playing){dotX+=(W/2-dotX)*0.01;dotY+=(H/2-dotY)*0.01;}
+        ctx.fillStyle='rgba(0,0,0,0.1)';ctx.fillRect(0,0,W,H);
+        if(dotAlpha>0.002&&dotR>0.5){const c=[255,230,200];const g=ctx.createRadialGradient(dotX,dotY,0,dotX,dotY,dotR);g.addColorStop(0,`rgba(${c[0]},${c[1]},${c[2]},${dotAlpha})`);g.addColorStop(0.2,`rgba(${c[0]},${c[1]},${c[2]},${dotAlpha*0.6})`);g.addColorStop(0.5,`rgba(${c[0]},${c[1]},${c[2]},${dotAlpha*0.15})`);g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.beginPath();ctx.arc(dotX,dotY,dotR,0,6.283);ctx.fill();}
+        requestAnimationFrame(loop);}
+      requestAnimationFrame(loop);
+      return {stop};
+    }
+
+    // ===== RED: Ring-modulated sub bass =====
+    function createRed(canvas, winEl, volSlider, dynSlider) {
+      const ctx = canvas.getContext('2d');
+      let filter, dist, master, sub, subG, ring, ringG, revG, delay, delayG;
+      let playing = false, chaos = 0, dotX, dotY, dotR = 0, dotAlpha = 0;
+      let vol = 0.6, dyn = 0.7, initialized = false;
+      let tx = 0.5, ty = 0.5, pr = 0.5, sp = 0;
+
+      volSlider.addEventListener('input', () => { vol = parseInt(volSlider.value)/100; if(master)master.gain.linearRampToValueAtTime(vol*0.28,actx.currentTime+0.05); });
+      dynSlider.addEventListener('input', () => { dyn = parseInt(dynSlider.value)/100; });
+
+      function init() {
+        if(initialized)return; const a=getCtx(); initialized=true;
+        filter=a.createBiquadFilter();filter.type='lowpass';filter.frequency.value=1200;filter.Q.value=4;
+        dist=a.createWaveShaper();const c=new Float32Array(256);for(let i=0;i<256;i++){const x=(i-128)/128;c[i]=Math.tanh(x*8)*0.6+Math.tanh(x*20)*0.2;}dist.curve=c;
+        delay=a.createDelay(0.5);delay.delayTime.value=0.12;delayG=a.createGain();delayG.gain.value=0.2;
+        const rl=a.sampleRate*1.5;const rb=a.createBuffer(2,rl,a.sampleRate);
+        for(let ch=0;ch<2;ch++){const d=rb.getChannelData(ch);for(let i=0;i<rl;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(a.sampleRate*0.3))*0.5;}
+        const rn=a.createConvolver();rn.buffer=rb;revG=a.createGain();revG.gain.value=0.25;
+        master=a.createGain();master.gain.value=vol*0.28;
+        sub=a.createOscillator();sub.type='sawtooth';sub.frequency.value=50;
+        ring=a.createOscillator();ring.type='sine';ring.frequency.value=120;
+        ringG=a.createGain();ringG.gain.value=0;subG=a.createGain();subG.gain.value=0;
+        ring.connect(ringG);sub.connect(subG);ringG.connect(subG.gain);
+        subG.connect(filter);filter.connect(dist);dist.connect(delay);delay.connect(delayG);delayG.connect(filter);dist.connect(rn);rn.connect(revG);revG.connect(master);master.connect(a.destination);
+        sub.start();ring.start();
+      }
+
+      function start(){if(!initialized)init();playing=true;tx=Math.random();ty=Math.random();pr=0.3+Math.random()*0.7;sp=Math.random()*0.5;winEl.classList.add('playing');winEl.querySelector('.status').textContent='on';}
+      function stop(){playing=false;winEl.classList.remove('playing');winEl.querySelector('.status').textContent='click';}
+
+      function upd(){if(!actx||!initialized)return;const n=actx.currentTime;
+        if(playing){tx+=(Math.random()-0.5)*0.02;ty+=(Math.random()-0.5)*0.02;tx=Math.max(0.1,Math.min(0.9,tx));ty=Math.max(0.1,Math.min(0.9,ty));pr+=(Math.random()-0.5)*0.08;pr=Math.max(0.2,Math.min(1,pr));sp+=(Math.random()-0.5)*0.06;sp=Math.max(0,Math.min(1,sp));
+        const t=(pr*0.6+sp*0.4)*dyn;chaos+=(t-chaos)*0.3;
+        sub.frequency.linearRampToValueAtTime(30+tx*100,n+0.03);ring.frequency.linearRampToValueAtTime(80+ty*400,n+0.03);
+        ringG.gain.linearRampToValueAtTime((0.3+sp*0.7)*dyn,n+0.02);subG.gain.linearRampToValueAtTime((0.07+pr*0.1)*dyn,n+0.02);
+        filter.frequency.linearRampToValueAtTime(300+ty*2000,n+0.04);
+        delayG.gain.linearRampToValueAtTime((0.1+sp*0.4)*dyn,n+0.04);revG.gain.linearRampToValueAtTime((0.15+pr*0.35)*dyn,n+0.04);
+        dotR+=(12+chaos*50-dotR)*0.2;dotAlpha+=(0.55+chaos*0.45-dotAlpha)*0.2;dotX+=(tx*canvas.width-dotX)*0.08;dotY+=(ty*canvas.height-dotY)*0.08;
+        }else{chaos+=-chaos*0.06;subG.gain.linearRampToValueAtTime(0,n+0.3);dotR+=(0-dotR)*0.06;dotAlpha+=(0-dotAlpha)*0.05;}
+      }
+
+      function size(){canvas.width=canvas.parentElement.clientWidth;canvas.height=canvas.parentElement.clientHeight;dotX=canvas.width/2;dotY=canvas.height/2;}
+      window.addEventListener('resize',size);size();
+      canvas.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(!initialized)init();playing?stop():start();});
+      let lt=0;
+      function loop(ts){if(!lt)lt=ts;const dt=Math.min((ts-lt)/1000,0.1);lt=ts;if(playing||chaos>0.01)upd();
+        const W=canvas.width,H=canvas.height;if(!playing){dotX+=(W/2-dotX)*0.01;dotY+=(H/2-dotY)*0.01;}
+        ctx.fillStyle='rgba(0,0,0,0.1)';ctx.fillRect(0,0,W,H);
+        if(dotAlpha>0.002&&dotR>0.5){const c=[255,130,100];const g=ctx.createRadialGradient(dotX,dotY,0,dotX,dotY,dotR);g.addColorStop(0,`rgba(${c[0]},${c[1]},${c[2]},${dotAlpha})`);g.addColorStop(0.2,`rgba(${c[0]},${c[1]},${c[2]},${dotAlpha*0.6})`);g.addColorStop(0.5,`rgba(${c[0]},${c[1]},${c[2]},${dotAlpha*0.15})`);g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.beginPath();ctx.arc(dotX,dotY,dotR,0,6.283);ctx.fill();}
+        requestAnimationFrame(loop);}
+      requestAnimationFrame(loop);
+      return {stop};
+    }
+
+    // ===== BLUE: Resonant swarm =====
+    function createBlue(canvas, winEl, volSlider, dynSlider) {
+      const ctx = canvas.getContext('2d');
+      let filter, master, revG, delay, delayG;
+      let swarm = []; const MAX = 10;
+      let playing = false, chaos = 0, dotX, dotY, dotR = 0, dotAlpha = 0;
+      let vol = 0.6, dyn = 0.7, initialized = false;
+      let tx = 0.5, ty = 0.5, pr = 0.5, sp = 0;
+
+      volSlider.addEventListener('input', () => { vol = parseInt(volSlider.value)/100; if(master)master.gain.linearRampToValueAtTime(vol*0.18,actx.currentTime+0.05); });
+      dynSlider.addEventListener('input', () => { dyn = parseInt(dynSlider.value)/100; });
+
+      function init() {
+        if(initialized)return; const a=getCtx(); initialized=true;
+        filter=a.createBiquadFilter();filter.type='lowpass';filter.frequency.value=6000;filter.Q.value=8;
+        delay=a.createDelay(0.7);delay.delayTime.value=0.22;delayG=a.createGain();delayG.gain.value=0.2;
+        const rl=a.sampleRate*3;const rb=a.createBuffer(2,rl,a.sampleRate);
+        for(let ch=0;ch<2;ch++){const d=rb.getChannelData(ch);for(let i=0;i<rl;i++)d[i]=(Math.random()*2-1)*Math.exp(-i/(a.sampleRate*0.6))*0.5;}
+        const rn=a.createConvolver();rn.buffer=rb;revG=a.createGain();revG.gain.value=0.5;
+        master=a.createGain();master.gain.value=vol*0.18;
+        filter.connect(delay);delay.connect(delayG);delayG.connect(filter);filter.connect(rn);rn.connect(revG);revG.connect(master);master.connect(a.destination);
+      }
+
+      function spwn(fr,gn){if(swarm.length>=MAX){const o=swarm.shift();try{o.osc.stop()}catch(e){}}const osc=actx.createOscillator();const g=actx.createGain();const p=actx.createStereoPanner();
+      osc.type=['sine','triangle','sine','sine'][Math.floor(Math.random()*4)];osc.frequency.value=fr;g.gain.value=0;p.pan.value=(Math.random()-0.5)*1.5;
+      osc.connect(g);g.connect(p);p.connect(filter);g.gain.linearRampToValueAtTime(gn,actx.currentTime+0.03);g.gain.linearRampToValueAtTime(gn*0.15,actx.currentTime+0.6);g.gain.linearRampToValueAtTime(0,actx.currentTime+2.5);
+      osc.start();osc.stop(actx.currentTime+3);swarm.push({osc,g});}
+
+      function start(){if(!initialized)init();playing=true;tx=Math.random();ty=Math.random();pr=0.3+Math.random()*0.7;sp=Math.random()*0.5;winEl.classList.add('playing');winEl.querySelector('.status').textContent='on';}
+      function stop(){playing=false;winEl.classList.remove('playing');winEl.querySelector('.status').textContent='click';}
+
+      function upd(){if(!actx||!initialized)return;const n=actx.currentTime;
+        if(playing){tx+=(Math.random()-0.5)*0.03;ty+=(Math.random()-0.5)*0.03;tx=Math.max(0.1,Math.min(0.9,tx));ty=Math.max(0.1,Math.min(0.9,ty));pr+=(Math.random()-0.5)*0.1;pr=Math.max(0.2,Math.min(1,pr));sp+=(Math.random()-0.5)*0.08;sp=Math.max(0,Math.min(1,sp));
+        const t=(pr*0.6+sp*0.4)*dyn;chaos+=(t-chaos)*0.35;
+        if(Math.random()<0.3+pr*0.5){const bf=150+tx*700;spwn(bf+(Math.random()-0.5)*chaos*30,(0.04+pr*0.08)*dyn);}
+        for(const v of swarm){if(Math.random()<0.2)v.osc.frequency.linearRampToValueAtTime(v.osc.frequency.value*(0.9+Math.random()*0.2),n+0.04);}
+        filter.frequency.linearRampToValueAtTime(800+ty*6000,n+0.04);filter.Q.linearRampToValueAtTime(4+pr*10,n+0.04);
+        delay.delayTime.linearRampToValueAtTime(0.1+sp*0.3,n+0.04);delayG.gain.linearRampToValueAtTime((0.1+pr*0.4)*dyn,n+0.04);revG.gain.linearRampToValueAtTime((0.3+pr*0.5)*dyn,n+0.04);
+        dotR+=(6+chaos*40-dotR)*0.2;dotAlpha+=(0.45+chaos*0.55-dotAlpha)*0.2;dotX+=(tx*canvas.width-dotX)*0.08;dotY+=(ty*canvas.height-dotY)*0.08;
+        }else{chaos+=-chaos*0.08;dotR+=(0-dotR)*0.06;dotAlpha+=(0-dotAlpha)*0.05;}
+      }
+
+      function size(){canvas.width=canvas.parentElement.clientWidth;canvas.height=canvas.parentElement.clientHeight;dotX=canvas.width/2;dotY=canvas.height/2;}
+      window.addEventListener('resize',size);size();
+      canvas.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();if(!initialized)init();playing?stop():start();});
+      let lt=0;
+      function loop(ts){if(!lt)lt=ts;const dt=Math.min((ts-lt)/1000,0.1);lt=ts;if(playing||chaos>0.01)upd();
+        const W=canvas.width,H=canvas.height;if(!playing){dotX+=(W/2-dotX)*0.01;dotY+=(H/2-dotY)*0.01;}
+        ctx.fillStyle='rgba(0,0,0,0.1)';ctx.fillRect(0,0,W,H);
+        if(dotAlpha>0.002&&dotR>0.5){const c=[140,185,255];const g=ctx.createRadialGradient(dotX,dotY,0,dotX,dotY,dotR);g.addColorStop(0,`rgba(${c[0]},${c[1]},${c[2]},${dotAlpha})`);g.addColorStop(0.2,`rgba(${c[0]},${c[1]},${c[2]},${dotAlpha*0.6})`);g.addColorStop(0.5,`rgba(${c[0]},${c[1]},${c[2]},${dotAlpha*0.15})`);g.addColorStop(1,'transparent');ctx.fillStyle=g;ctx.beginPath();ctx.arc(dotX,dotY,dotR,0,6.283);ctx.fill();}
+        requestAnimationFrame(loop);}
+      requestAnimationFrame(loop);
+      return {stop};
+    }
+
+    const s0 = createWhite(document.getElementById('c1'), document.getElementById('win1'), document.getElementById('wvol'), document.getElementById('wdyn'));
+    const s1 = createRed(document.getElementById('c2'), document.getElementById('win2'), document.getElementById('rvol'), document.getElementById('rdyn'));
+    const s2 = createBlue(document.getElementById('c3'), document.getElementById('win3'), document.getElementById('bvol'), document.getElementById('bdyn'));
+
+    document.getElementById('stopBtn').addEventListener('click', () => { s0.stop(); s1.stop(); s2.stop(); });
+  </script>
+</body>
+</html>
