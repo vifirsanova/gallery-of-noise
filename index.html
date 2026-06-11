@@ -15,91 +15,156 @@
       user-select: none; -webkit-user-select: none;
     }
     header {
-      text-align: center; padding: 12px 10px 6px;
-      color: #aaa; font-size: 11px; letter-spacing: 5px;
+      text-align: center; padding: 16px 10px 10px;
+      color: #aaa; font-size: 13px; letter-spacing: 6px;
       pointer-events: none; z-index: 10;
     }
     .main {
       flex: 1; display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 1fr 1fr;
-      gap: 2px; background: #080808; padding: 2px;
-      max-width: 620px; width: 100%; margin: 0 auto;
+      gap: 3px; background: #080808; padding: 3px;
+      max-width: 1000px; width: 100%; margin: 0 auto;
     }
     .window {
       background: #010101; position: relative;
       overflow: hidden; cursor: pointer;
-      min-height: 0;
+      min-height: 150px;
     }
     .window canvas {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
     }
     .window .label {
-      position: absolute; top: 8px; left: 10px;
-      color: #ccc; font-size: 11px; letter-spacing: 4px;
+      position: absolute; top: 10px; left: 12px;
+      color: #ccc; font-size: 12px; letter-spacing: 5px;
       pointer-events: none; z-index: 5;
     }
     .window .status {
-      position: absolute; bottom: 8px; right: 10px;
-      color: #333; font-size: 9px; letter-spacing: 2px;
+      position: absolute; bottom: 10px; right: 12px;
+      color: #333; font-size: 10px; letter-spacing: 3px;
       pointer-events: none; z-index: 5;
     }
     .window.playing { outline: 1px solid #222; }
     .window.playing .status { color: #666; }
 
     .eq-panel {
-      background: #0a0a0a; padding: 10px;
+      background: #0a0a0a; padding: 16px;
       display: flex; flex-direction: column;
-      gap: 12px; overflow-y: auto;
+      gap: 16px; overflow-y: auto;
     }
     .eq-title {
-      color: #bbb; font-size: 11px; letter-spacing: 4px;
-      text-align: center; margin-bottom: 2px;
+      color: #bbb; font-size: 13px; letter-spacing: 5px;
+      text-align: center; margin-bottom: 4px;
     }
     .channel-group {
-      display: flex; flex-direction: column; gap: 8px;
-      padding: 8px; background: #070707; border-radius: 3px;
+      display: flex; flex-direction: column; gap: 10px;
+      padding: 10px; background: #070707; border-radius: 3px;
       border: 1px solid #111;
     }
     .channel-label {
-      color: #aaa; font-size: 10px; letter-spacing: 3px;
+      color: #aaa; font-size: 11px; letter-spacing: 4px;
       text-align: center;
     }
     .fader-row {
-      display: flex; gap: 8px; justify-content: center;
+      display: flex; gap: 12px; justify-content: center;
       align-items: flex-end;
     }
     .fader {
       display: flex; flex-direction: column;
-      align-items: center; gap: 6px;
+      align-items: center; gap: 8px;
     }
     .fader label {
-      color: #888; font-size: 9px; letter-spacing: 2px;
+      color: #888; font-size: 10px; letter-spacing: 3px;
     }
     .fader input[type=range] {
       -webkit-appearance: none; appearance: none;
-      width: 60px; height: 4px;
+      width: 80px; height: 4px;
       transform: rotate(-90deg);
-      transform-origin: 30px 30px;
+      transform-origin: 40px 40px;
       background: #181818; border-radius: 2px;
-      outline: none; margin: 28px 0;
+      outline: none; margin: 36px 0;
     }
     .fader input[type=range]::-webkit-slider-thumb {
-      -webkit-appearance: none; width: 14px; height: 14px;
+      -webkit-appearance: none; width: 16px; height: 16px;
       background: #666; border-radius: 2px; cursor: pointer;
     }
     .stop-btn {
-      text-align: center; padding: 10px;
-      color: #555; font-size: 10px; letter-spacing: 3px;
+      text-align: center; padding: 12px;
+      color: #555; font-size: 11px; letter-spacing: 4px;
       cursor: pointer; border: 1px solid #1a1a1a;
       border-radius: 3px; transition: all 0.2s;
       background: #070707;
     }
     .stop-btn:hover { color: #c44; border-color: #422; background: #0f0808; }
     footer {
-      text-align: center; padding: 6px;
-      color: #666; font-size: 8px; letter-spacing: 3px;
+      text-align: center; padding: 8px;
+      color: #666; font-size: 9px; letter-spacing: 4px;
       pointer-events: none; z-index: 10;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 768px) {
+      header { font-size: 11px; letter-spacing: 4px; padding: 10px 8px 6px; }
+      .main {
+        max-width: 620px;
+        gap: 2px; padding: 2px;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+      .window .label { font-size: 10px; letter-spacing: 3px; top: 6px; left: 8px; }
+      .window .status { font-size: 8px; bottom: 6px; right: 8px; }
+      .eq-panel { padding: 10px; gap: 10px; }
+      .eq-title { font-size: 11px; letter-spacing: 3px; }
+      .channel-group { gap: 6px; padding: 6px; }
+      .channel-label { font-size: 10px; letter-spacing: 3px; }
+      .fader-row { gap: 6px; }
+      .fader input[type=range] { width: 55px; transform-origin: 27px 27px; margin: 26px 0; }
+      .fader input[type=range]::-webkit-slider-thumb { width: 12px; height: 12px; }
+      .fader label { font-size: 9px; }
+      .stop-btn { font-size: 10px; padding: 10px; }
+    }
+    @media (max-width: 480px) {
+      header { font-size: 10px; letter-spacing: 3px; }
+      .window .label { font-size: 9px; letter-spacing: 2px; }
+      .eq-title { font-size: 10px; }
+      .channel-label { font-size: 9px; }
+      .fader input[type=range] { width: 45px; transform-origin: 22px 22px; margin: 22px 0; }
+      .fader input[type=range]::-webkit-slider-thumb { width: 10px; height: 10px; }
+      .fader label { font-size: 8px; }
+      .stop-btn { font-size: 9px; padding: 8px; }
+    }
+
+    @media (min-width: 1024px) {
+      .main {
+        max-width: 1000px;
+        grid-template-columns: 1fr 1fr 280px;
+        grid-template-rows: 1fr 1fr;
+        gap: 4px; padding: 4px;
+      }
+      .eq-panel {
+        grid-row: 1 / 3;
+        grid-column: 3;
+      }
+      .window {
+        min-height: 180px;
+      }
+      .fader input[type=range] {
+        width: 90px;
+        transform-origin: 45px 45px;
+        margin: 40px 0;
+      }
+    }
+
+    @media (min-width: 1400px) {
+      .main {
+        max-width: 1200px;
+        grid-template-columns: 1fr 1fr 320px;
+      }
+      .fader input[type=range] {
+        width: 100px;
+        transform-origin: 50px 50px;
+        margin: 44px 0;
+      }
     }
   </style>
 </head>
@@ -181,7 +246,6 @@
         const rn=a.createConvolver();rn.buffer=rb;revG=a.createGain();revG.gain.value=0.5;
         master=a.createGain();master.gain.value=vol*0.3;
         
-        // Simpler chain: noise->filter->dist->delay/reverb->master
         noiseF=a.createBiquadFilter();noiseF.type='bandpass';noiseF.frequency.value=600;noiseF.Q.value=0.3;
         noiseG=a.createGain();noiseG.gain.value=0;
         
