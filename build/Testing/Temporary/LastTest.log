@@ -1,0 +1,41 @@
+Start testing: Nov 17 02:09 MSK
+----------------------------------------------------------
+1/2 Testing: core_unit_tests
+1/2 Test: core_unit_tests
+Command: "/home/vector/Downloads/synth/build/tests"
+Directory: /home/vector/Downloads/synth/build
+"core_unit_tests" start time: Nov 17 02:09 MSK
+Output:
+----------------------------------------------------------
+Randomness seeded to: 4193062929
+===============================================================================
+All tests passed (148105 assertions in 6 test cases)
+
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"core_unit_tests" end time: Nov 17 02:09 MSK
+"core_unit_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/2 Testing: system_integration_tests
+2/2 Test: system_integration_tests
+Command: "/home/vector/Downloads/synth/build/integration_tests"
+Directory: /home/vector/Downloads/synth/build
+"system_integration_tests" start time: Nov 17 02:09 MSK
+Output:
+----------------------------------------------------------
+Randomness seeded to: 2932941703
+===============================================================================
+All tests passed (43 assertions in 4 test cases)
+
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"system_integration_tests" end time: Nov 17 02:09 MSK
+"system_integration_tests" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Nov 17 02:09 MSK

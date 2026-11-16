@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/vector/Downloads/synth/build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

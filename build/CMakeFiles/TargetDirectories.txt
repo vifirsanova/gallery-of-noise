@@ -1,0 +1,11 @@
+/home/vector/Downloads/synth/build/CMakeFiles/core.dir
+/home/vector/Downloads/synth/build/CMakeFiles/audio.dir
+/home/vector/Downloads/synth/build/CMakeFiles/ui.dir
+/home/vector/Downloads/synth/build/CMakeFiles/app_modules.dir
+/home/vector/Downloads/synth/build/CMakeFiles/app.dir
+/home/vector/Downloads/synth/build/CMakeFiles/render_wav.dir
+/home/vector/Downloads/synth/build/CMakeFiles/tests.dir
+/home/vector/Downloads/synth/build/CMakeFiles/integration_tests.dir
+/home/vector/Downloads/synth/build/CMakeFiles/test.dir
+/home/vector/Downloads/synth/build/CMakeFiles/edit_cache.dir
+/home/vector/Downloads/synth/build/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,134 @@
+[
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/core.dir/src/core/Types.cpp.o -c /home/vector/Downloads/synth/src/core/Types.cpp",
+  "file": "/home/vector/Downloads/synth/src/core/Types.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/core.dir/src/core/Types.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/core.dir/src/core/State.cpp.o -c /home/vector/Downloads/synth/src/core/State.cpp",
+  "file": "/home/vector/Downloads/synth/src/core/State.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/core.dir/src/core/State.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/core.dir/src/core/Commands.cpp.o -c /home/vector/Downloads/synth/src/core/Commands.cpp",
+  "file": "/home/vector/Downloads/synth/src/core/Commands.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/core.dir/src/core/Commands.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/core.dir/src/core/Effects.cpp.o -c /home/vector/Downloads/synth/src/core/Effects.cpp",
+  "file": "/home/vector/Downloads/synth/src/core/Effects.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/core.dir/src/core/Effects.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/core.dir/src/core/BioSignals.cpp.o -c /home/vector/Downloads/synth/src/core/BioSignals.cpp",
+  "file": "/home/vector/Downloads/synth/src/core/BioSignals.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/core.dir/src/core/BioSignals.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/core.dir/src/core/DroneSynth.cpp.o -c /home/vector/Downloads/synth/src/core/DroneSynth.cpp",
+  "file": "/home/vector/Downloads/synth/src/core/DroneSynth.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/core.dir/src/core/DroneSynth.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/core.dir/src/core/NoiseSynth.cpp.o -c /home/vector/Downloads/synth/src/core/NoiseSynth.cpp",
+  "file": "/home/vector/Downloads/synth/src/core/NoiseSynth.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/core.dir/src/core/NoiseSynth.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/core.dir/src/core/Engine.cpp.o -c /home/vector/Downloads/synth/src/core/Engine.cpp",
+  "file": "/home/vector/Downloads/synth/src/core/Engine.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/core.dir/src/core/Engine.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/core.dir/src/core/WavFile.cpp.o -c /home/vector/Downloads/synth/src/core/WavFile.cpp",
+  "file": "/home/vector/Downloads/synth/src/core/WavFile.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/core.dir/src/core/WavFile.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/core.dir/src/core/JsonSerializer.cpp.o -c /home/vector/Downloads/synth/src/core/JsonSerializer.cpp",
+  "file": "/home/vector/Downloads/synth/src/core/JsonSerializer.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/core.dir/src/core/JsonSerializer.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -DBIOMUSIC_HAVE_ALSA=1 -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/audio.dir/src/audio/AlsaBackend.cpp.o -c /home/vector/Downloads/synth/src/audio/AlsaBackend.cpp",
+  "file": "/home/vector/Downloads/synth/src/audio/AlsaBackend.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/audio.dir/src/audio/AlsaBackend.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -DBIOMUSIC_HAVE_ALSA=1 -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/audio.dir/src/audio/SimulatedBackend.cpp.o -c /home/vector/Downloads/synth/src/audio/SimulatedBackend.cpp",
+  "file": "/home/vector/Downloads/synth/src/audio/SimulatedBackend.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/audio.dir/src/audio/SimulatedBackend.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -DBIOMUS_HAS_SDL2=1 -I/home/vector/Downloads/synth/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/ui.dir/src/ui/Canvas.cpp.o -c /home/vector/Downloads/synth/src/ui/Canvas.cpp",
+  "file": "/home/vector/Downloads/synth/src/ui/Canvas.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/ui.dir/src/ui/Canvas.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -DBIOMUS_HAS_SDL2=1 -I/home/vector/Downloads/synth/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/ui.dir/src/ui/InstrumentUi.cpp.o -c /home/vector/Downloads/synth/src/ui/InstrumentUi.cpp",
+  "file": "/home/vector/Downloads/synth/src/ui/InstrumentUi.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/ui.dir/src/ui/InstrumentUi.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -DBIOMUS_HAS_SDL2=1 -I/home/vector/Downloads/synth/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/ui.dir/src/ui/FbdevBackend.cpp.o -c /home/vector/Downloads/synth/src/ui/FbdevBackend.cpp",
+  "file": "/home/vector/Downloads/synth/src/ui/FbdevBackend.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/ui.dir/src/ui/FbdevBackend.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -DBIOMUS_HAS_SDL2=1 -I/home/vector/Downloads/synth/include -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/ui.dir/src/ui/Sdl2Backend.cpp.o -c /home/vector/Downloads/synth/src/ui/Sdl2Backend.cpp",
+  "file": "/home/vector/Downloads/synth/src/ui/Sdl2Backend.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/ui.dir/src/ui/Sdl2Backend.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -DBIOMUSIC_HAVE_RTMIDI=1 -I/home/vector/Downloads/synth/include -I/usr/include/rtmidi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/app_modules.dir/src/app/MidiController.cpp.o -c /home/vector/Downloads/synth/src/app/MidiController.cpp",
+  "file": "/home/vector/Downloads/synth/src/app/MidiController.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/app_modules.dir/src/app/MidiController.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -DBIOMUSIC_HAVE_RTMIDI=1 -I/home/vector/Downloads/synth/include -I/usr/include/rtmidi -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/app_modules.dir/src/app/OledDisplay.cpp.o -c /home/vector/Downloads/synth/src/app/OledDisplay.cpp",
+  "file": "/home/vector/Downloads/synth/src/app/OledDisplay.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/app_modules.dir/src/app/OledDisplay.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -DBIOMUSIC_HAVE_ALSA=1 -DBIOMUSIC_HAVE_RTMIDI=1 -DBIOMUS_HAS_SDL2=1 -I/home/vector/Downloads/synth/include -I/usr/include/rtmidi -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/app.dir/src/app/main.cpp.o -c /home/vector/Downloads/synth/src/app/main.cpp",
+  "file": "/home/vector/Downloads/synth/src/app/main.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/app.dir/src/app/main.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/render_wav.dir/src/app/render_wav.cpp.o -c /home/vector/Downloads/synth/src/app/render_wav.cpp",
+  "file": "/home/vector/Downloads/synth/src/app/render_wav.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/render_wav.dir/src/app/render_wav.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -DBIOMUSIC_HAVE_CATCH2=1 -I/home/vector/Downloads/synth/include -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/tests.dir/tests/test_core.cpp.o -c /home/vector/Downloads/synth/tests/test_core.cpp",
+  "file": "/home/vector/Downloads/synth/tests/test_core.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/tests.dir/tests/test_core.cpp.o"
+},
+{
+  "directory": "/home/vector/Downloads/synth/build",
+  "command": "/usr/bin/c++ -DBIOMUSIC_HAVE_ALSA=1 -DBIOMUSIC_HAVE_CATCH2=1 -DBIOMUSIC_HAVE_RTMIDI=1 -DBIOMUS_HAS_SDL2=1 -I/home/vector/Downloads/synth/include -I/usr/include/rtmidi -isystem /usr/include/SDL2 -O3 -DNDEBUG -std=c++17 -Wall -Wextra -Wpedantic -o CMakeFiles/integration_tests.dir/tests/test_integration.cpp.o -c /home/vector/Downloads/synth/tests/test_integration.cpp",
+  "file": "/home/vector/Downloads/synth/tests/test_integration.cpp",
+  "output": "/home/vector/Downloads/synth/build/CMakeFiles/integration_tests.dir/tests/test_integration.cpp.o"
+}
+]
